@@ -34,10 +34,10 @@ public class ArrayBasedStack<T> implements StackInterface<T>{
    /** Adds a new entry to the top of this stack.
        @param newEntry  An object to be added to the stack. */
    public void push(T newEntry){
-      if (topOfStack >= INITIAL_CAPACITY){
+      if (topOfStack <= (data.length-1)){
          this.expandArray();
       }
-      data[topOfStack++] = newEntry;
+      data[topOfStack+1] = newEntry;
       }
   
    /** Removes and returns this stack's top entry.
@@ -83,7 +83,19 @@ public class ArrayBasedStack<T> implements StackInterface<T>{
       }
    }
 
-
-
+public static void main(String args[]){
+   StackInterface<String> stack = new ArrayBasedStack(3);
+   System.out.println(stack.isEmpty());
+   stack.push("b");
+   stack.push("e");
+   stack.peek();
+   stack.pop();
+   stack.peek();
+   stack.pop();
+   stack.push("o");
+   stack.pop();
+   System.out.println(stack.isEmpty());
+   stack.pop();
+}
 
 }
